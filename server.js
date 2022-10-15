@@ -20,6 +20,23 @@ app.get('/notes', (req, res) =>
   res.sendFile(path.join(__dirname, '/public/notes.html'))
 );
 
+app.get('/api/notes/:notes_id', (req, res) => {
+  if (req.params.review_id) {
+    console.info(`${req.method} request received to get a single a review`);
+    const reviewId = req.params.review_id;
+    for (let i = 0; i < reviews.length; i++) {
+      const currentReview = reviews[i];
+      if (currentReview.review_id === reviewId) {
+        res.status(200).json(currentReview);
+        return;
+      }
+    }
+    res.status(404).send('Review not found');
+  } else {
+    res.status(400).send('Review ID not provided');
+  }
+});
+
 app.listen(PORT, () =>
   console.log(`App listening at http://localhost:${PORT} 🚀`)
 );
