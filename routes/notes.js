@@ -4,8 +4,10 @@ const { readFromFile, readAndAppend } = require('../helpers/fsUtils');
 const uuid = require('../helpers/uuid');
 
 // GET Route for retrieving all notes
-notes.get('/', (req, res) => {
-    readFromFile('./db/db.json').then((data) => res.json(JSON.parse(data)));
+notes.get('/', async (req, res) => {
+    await readFromFile('./db/db.json')
+        .then((data) => res.json(JSON.parse(data)))
+        .catch((err) => console.error('Data could not be received: ', err));
 })
 
 // POST Route for posting notes to database
