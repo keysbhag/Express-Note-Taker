@@ -49,7 +49,9 @@ const deleteNote = (id) =>
     headers: {
       'Content-Type': 'application/json',
     },
-  });
+  },
+  console.log("deleteNote function was run")
+  );
 
 const renderActiveNote = () => {
   hide(saveNoteBtn);
@@ -73,6 +75,7 @@ const handleNoteSave = () => {
     text: noteText.value,
   };
   saveNote(newNote).then(() => {
+    console.log("Notes Saved");
     getAndRenderNotes();
     renderActiveNote();
   });
@@ -85,12 +88,16 @@ const handleNoteDelete = (e) => {
 
   const note = e.target;
   const noteId = JSON.parse(note.parentElement.getAttribute('data-note')).id;
+  console.log(noteId);
+  console.info(noteId);
 
   if (activeNote.id === noteId) {
     activeNote = {};
   }
-
+  // here is the problem
+  console.log("Before deleteNote Promise");
   deleteNote(noteId).then(() => {
+    console.log('deleteNote Promises reached');
     getAndRenderNotes();
     renderActiveNote();
   });
@@ -99,7 +106,7 @@ const handleNoteDelete = (e) => {
 // Sets the activeNote and displays it
 const handleNoteView = (e) => {
   e.preventDefault();
-  console.log('im clicked');
+  console.log('handleNoteView is working');
   activeNote = JSON.parse(e.target.parentElement.getAttribute('data-note'));
   console.log(activeNote);
   renderActiveNote();
