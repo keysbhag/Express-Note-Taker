@@ -5,8 +5,8 @@ const { readFromFile, readAndAppend, writeToFile } = require('../helpers/fsUtils
 const uuid = require('../helpers/uuid');
 
 // GET Route for retrieving all notes
-notes.get('/', async (req, res) => {
-    await readFromFile('./db/db.json')
+notes.get('/', (req, res) => {
+    readFromFile('./db/db.json')
         .then((data) => res.json(JSON.parse(data)))
         .catch((err) => console.error('Data could not be received: ', err));
 })
@@ -45,10 +45,9 @@ notes.delete("/:id", async function(req, res) {
             fs.writeFile('./db/db.json', JSON.stringify(newArray, null, 4), (err) =>
             err ? console.error(err) : console.info(`\nData written to ./db/db.json`))
 
-            return res.send(newArray)
+            res.send("Note Successfully deleted")
         })
         .catch((err) => console.error('Data could not be received: ', err));
-
   });
 
 module.exports = notes;
