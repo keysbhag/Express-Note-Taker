@@ -9,8 +9,15 @@ const uuid = require('../helpers/uuid');
 notes.get('/', (req, res) => {
     // Reads the Database file and returns it in JSON format which is utilized by a frontend function
     readFromFile('./db/db.json')
-        .then((data) => res.json(JSON.parse(data)))
-        .catch((err) => console.error('Data could not be received: ', err));
+        .then((data) => {
+            console.log(data);
+            res.json(JSON.parse(data))
+        })
+        .catch((err) => { 
+            console.error('Data could not be received: ', err)
+            console.log("Error Occured!");
+        });
+    
 })
 
 // POST Route for posting notes to database
