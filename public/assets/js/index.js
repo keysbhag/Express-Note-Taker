@@ -18,7 +18,6 @@ const show = (elem) => {
 };
 
 // Hide an element
-//
 const hide = (elem) => {
   elem.style.display = 'none';
 };
@@ -51,6 +50,7 @@ const deleteNote = (id) =>
     },
   });
 
+// Makes sure notes clicked on notes are rendered but are not changeable
 const renderActiveNote = () => {
   hide(saveNoteBtn);
 
