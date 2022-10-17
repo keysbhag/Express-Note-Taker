@@ -9,6 +9,8 @@ This project was inspired by the need from small business owners to be able to w
 * [Installation](#installation)
 * [Usage](#usage)
 * [Credits](#credits)
+* [Demo](#demo)
+* [Deployed Application](#deployed-application)
 * [License](#license)
 * [Contribute](#contribute)
 * [Testing](#testing)
