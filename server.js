@@ -1,12 +1,15 @@
 // Declaring express variables and routers
 const express = require('express');
 const path = require('path');
+const { tracker } = require('./middleware/tracker');
 const api = require('./routes/index.js');
 
 // Sets port
 const PORT = 3001;
 
 const app = express();
+
+app.use(tracker);
 
 // Allows express to use methods from the browser and through JSON 
 app.use(express.json());
