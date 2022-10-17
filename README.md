@@ -40,8 +40,7 @@ Here a look at the application interface:
 
 ## Deployed Application
 
-Here is the Link for the deployed application!: 
-
+Here is the Link for the deployed application!: https://express-note-taking-app-bykeys.herokuapp.com/notes
 
 
 ## License
